@@ -1,7 +1,7 @@
-
+const User = require('../models/User');
 
 const getAllJobs = async (req,res) => {
-    res.send('get all jobs');
+    res.json(req.user);
 }
 
 
@@ -11,7 +11,8 @@ const getJob = async (req,res) => {
 
 
 const createJob = async (req,res) => {
-    res.send('create job');
+    console.log("Creating Job")
+    res.json(req.user);
 }
 
 const updateJob = async (req,res) => {
