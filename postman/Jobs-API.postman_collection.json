@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "910e3cbd-a231-436d-8ddb-ee2946b1efab",
+		"name": "Jobs-API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12555318"
+	},
+	"item": [
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json()\r",
+							"pm.globals.set(\"accessToken\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"biz3\",\r\n    \"email\": \"biz3@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/register",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsonData = pm.response.json()\r",
+							"pm.globals.set(\"accessToken\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"annabaaba@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y5MmRhYTllMjRmYzNiNTRkNGJhNDMiLCJuYW1lIjoiYW5uYWJhYWJhIiwiaWF0IjoxNjc3Mjc0NTM4LCJleHAiOjE2Nzk4NjY1Mzh9.y3BWAEjhFJscb6_RehSf4-OVIDsh1oxW7QdOpxG_Yhw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company\": \"ubisoft\",\r\n    \"position\": \"3D Programmer 3\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/jobs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all jobs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y5MmRhYTllMjRmYzNiNTRkNGJhNDMiLCJuYW1lIjoiYW5uYWJhYWJhIiwiaWF0IjoxNjc3Mjc0NTM4LCJleHAiOjE2Nzk4NjY1Mzh9.y3BWAEjhFJscb6_RehSf4-OVIDsh1oxW7QdOpxG_Yhw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/jobs",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y5MmRhYTllMjRmYzNiNTRkNGJhNDMiLCJuYW1lIjoiYW5uYWJhYWJhIiwiaWF0IjoxNjc3Mjc0NTM4LCJleHAiOjE2Nzk4NjY1Mzh9.y3BWAEjhFJscb6_RehSf4-OVIDsh1oxW7QdOpxG_Yhw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/jobs/63fae45f498fd6208434fbf1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs",
+						"63fae45f498fd6208434fbf1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y5MmRhYTllMjRmYzNiNTRkNGJhNDMiLCJuYW1lIjoiYW5uYWJhYWJhIiwiaWF0IjoxNjc3Mjc0NTM4LCJleHAiOjE2Nzk4NjY1Mzh9.y3BWAEjhFJscb6_RehSf4-OVIDsh1oxW7QdOpxG_Yhw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"company\": \"mpi\",\r\n    \"position\": \"developer 2\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/jobs/63fae43f498fd6208434fbed",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs",
+						"63fae43f498fd6208434fbed"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete job",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2Y5MmRhYTllMjRmYzNiNTRkNGJhNDMiLCJuYW1lIjoiYW5uYWJhYWJhIiwiaWF0IjoxNjc3Mjc0NTM4LCJleHAiOjE2Nzk4NjY1Mzh9.y3BWAEjhFJscb6_RehSf4-OVIDsh1oxW7QdOpxG_Yhw",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/jobs/63fae45f498fd6208434fbf1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"jobs",
+						"63fae45f498fd6208434fbf1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
