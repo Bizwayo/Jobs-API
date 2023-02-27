@@ -18,7 +18,7 @@ steps:
 - script: |
     npm install
     npm start
-  displayName: 'npm install and run'
+  displayName: 'npm install and start'
 
 - task: CopyFiles@2
   inputs:
@@ -33,9 +33,3 @@ steps:
     contents: 'package.json' 
     targetFolder: $(Build.ArtifactStagingDirectory)/npm
   displayName: 'Copy package.json'   
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/npm'
-    artifactName: npm
-  displayName: 'Publish npm artifact'
